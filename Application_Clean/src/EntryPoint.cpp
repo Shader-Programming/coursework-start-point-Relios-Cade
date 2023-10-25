@@ -1,6 +1,6 @@
 #include "WindowManager.h"
 #include "Properties.h"
-#include "Scene.h" 
+#include "myScene.h" 
 
 /*
 Entry point for App
@@ -12,7 +12,7 @@ Runs game loop
 void main() {
 
 	WindowManager windowMan("GAMR2511 Labs", SCR_WIDTH, SCR_HEIGHT, true);  // name, width, height, vSync,
-	Scene scene(windowMan.getWindow(), windowMan.getHandler()); // pass GLFWwindow and Input Handler to scene
+	MyScene scene(windowMan.getWindow(), windowMan.getHandler()); // pass GLFWwindow and Input Handler to scene
 
 	while (!glfwWindowShouldClose(windowMan.getWindow())) {
 
