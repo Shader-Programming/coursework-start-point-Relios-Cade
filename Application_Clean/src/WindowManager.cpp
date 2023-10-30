@@ -21,7 +21,7 @@ void WindowManager::initialise()
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
         std::cout << "Failed to initialize GLAD" << std::endl;
 
-    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR);//_DISABLED);  // FPS Camera movement - no mouse, change GLFW_CURSOR to DISABLED for FPS camera
+    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//_DISABLED);  // FPS Camera movement - no mouse, change GLFW_CURSOR to DISABLED for FPS camera
     glfwSetWindowUserPointer(m_window, m_rawHandler);  // points to an Input Handler instance, this is key to using callbacks from this class https://www.glfw.org/docs/3.3/group__window.html
 
                                  // callbacks
