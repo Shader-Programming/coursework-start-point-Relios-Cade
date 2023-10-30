@@ -23,8 +23,6 @@ class GameObject;
 
  */
 
-
-
 class Camera {
 
 public:

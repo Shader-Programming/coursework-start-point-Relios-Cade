@@ -13,7 +13,7 @@ void MyScene::makeVAO()
 {
 
 	glCreateBuffers(1, &VBO);
-	glNamedBufferStorage(VBO, sizeof(float) * 3, vertexData, GL_DYNAMIC_STORAGE_BIT);
+	glNamedBufferStorage(VBO, sizeof(float) * 18, vertexData, GL_DYNAMIC_STORAGE_BIT);
 
 	glCreateVertexArrays(1, &VAO);
 	glVertexArrayVertexBuffer(VAO, 0, VBO, 0, sizeof(float) * 3);
