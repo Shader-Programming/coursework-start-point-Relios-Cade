@@ -49,6 +49,7 @@ void MyScene::render()
 	m_myShader->setMat4("View", m_view);
 	m_myShader->setMat4("Projection", m_projection);
 	m_myShader->setMat4("Model", m_model);
+	m_myShader->setVec3("viewPos", m_camera->getPosition());
 
 
 
@@ -90,7 +91,7 @@ void MyScene::render()
 		cubeRota = glm::vec3(0.0, 0.0, 0.0);
 	}*/
 	m_model = glm::translate(m_model, glm::vec3(5.0, 0.0, 0.0));
-	m_model = glm::rotate(m_model, (float)(glfwGetTime() * 5.0), glm::vec3(1.0, 0.0, 0.0));
+	m_model = glm::rotate(m_model, (float)(glfwGetTime() * 0.5), glm::vec3(1.0, 0.0, 0.0));
 	m_myShader->setMat4("Model", m_model);
 	
 	glDrawElements(GL_TRIANGLES, vertexData.size(), GL_UNSIGNED_INT, 0);
