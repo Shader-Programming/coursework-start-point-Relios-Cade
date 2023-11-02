@@ -52,6 +52,17 @@ void MyScene::render()
 	m_myShader->setVec3("viewPos", m_camera->getPosition());
 
 
+	glm::vec3 pointLightPos = glm::vec3(-2.0f, 0.0f, 0.0f);  
+	glm::vec3 pointLightColour = glm::vec3(1.0f, 0.0f, 0.0f);  
+	glm::vec3 pointLightAtten = glm::vec3(1.0f, 0.22f, 0.02f); 
+
+	m_myShader->setVec3("pointLightPos", pointLightPos);
+	m_myShader->setVec3("pointLightColour", pointLightColour);
+	m_myShader->setVec3("pointLightAtten", pointLightAtten);
+
+	
+
+
 
 
 	glBindVertexArray(VAO);
