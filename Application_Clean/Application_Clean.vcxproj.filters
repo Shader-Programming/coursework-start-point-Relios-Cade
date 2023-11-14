@@ -36,13 +36,13 @@
     <ClCompile Include="src\myScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lights\DirectionalLight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Lights\Light.cpp">
+    <ClCompile Include="src\DirectionalLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PointLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,13 +74,13 @@
     <ClInclude Include="include\myScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Lights\DirectionalLight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Lights\Light.h">
+    <ClInclude Include="include\DirectionalLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PointLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

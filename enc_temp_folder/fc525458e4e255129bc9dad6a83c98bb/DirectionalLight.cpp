@@ -6,10 +6,10 @@ DirectionalLight::DirectionalLight(glm::vec3 colour, glm::vec3 direction, float 
 	m_ambientFactor(ambient)
 {}
 
-DirectionalLight::~DirectionalLight()
-{
-
-}
+//DirectionalLight::~DirectionalLight()
+//{
+//
+//}
 
 void DirectionalLight::setLightUnifroms(Shader* shader)
 {

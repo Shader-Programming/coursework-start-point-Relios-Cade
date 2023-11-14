@@ -10,15 +10,15 @@
 class Cube
 {
 public:
-	Cube(glm::vec3 col, float shine, float specStrength);
+	Cube(glm::vec3 colour, float shine, float specStrength);
 	~Cube();
 
 	void setCubeMaterialValues(Shader* shader);
 	
 	void setTransform(Shader* shader) { shader->setMat4("Model", m_transform); }
-	void resetTransform() { m_transform = glm::mat4(1.0); }
+	void resetTransform() { m_transform = glm::mat4(1.0f); }
 
-	unsigned int& getVAO() { return m_VAO; }
+	unsigned int& getVAO() { return m_VAO; };
 	glm::mat4& getModelMatrix() { return m_transform; }
 	unsigned int getIndicesCount() { return cubeIndices.size(); }
 

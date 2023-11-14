@@ -1,13 +1,15 @@
-#include "Cube.h"
+#include "cube.h"
 
-Cube::Cube(glm::vec3 col, float shine, float specStrength) : m_colour(col), m_shine(shine), m_specStrength(specStrength)
+Cube::Cube(glm::vec3 colour, float shine, float specStrength) :
+	m_colour(colour),
+	m_specStrength(specStrength),
+	m_shine(shine)
 {
 	makeVAO();
 	resetTransform();
 }
 
-Cube::~Cube()
-{
+Cube::~Cube() {
 
 }
 
@@ -24,9 +26,8 @@ void Cube::rotate(float angle, glm::vec3 axis)
 	m_transform = glm::rotate(m_transform, (float)(angle), axis);
 }
 
-void Cube::scale(float angle, glm::vec3 axis)
+void Cube::scale(float scaleFactor, glm::vec3 axis)
 {
-
 }
 
 void Cube::transform(glm::vec3 translation)
@@ -55,5 +56,3 @@ void Cube::makeVAO()
 	glVertexArrayAttribBinding(m_VAO, 0, 0);
 	glVertexArrayAttribBinding(m_VAO, 1, 0);
 }
-
-

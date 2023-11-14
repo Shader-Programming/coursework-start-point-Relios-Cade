@@ -39,8 +39,29 @@ void main()
 	FragColor = vec4(result, 1.0);
 }
 
-vec3 getDirectionalLight()
-{
+vec3 getPointLight() {
+	float distance = length(pLightPosition - posInWS);
+	float attn = 1.0 / (pAttentuation.x + (pAttentuation.y * distance) + (pAttentuation.z * (distance * distance)));
+
+	vec3 lightDir = normalize((pLightPosition - posInWS));
+
+	float diffuseFactor = dot(n, lightDir);
+	diffuseFactor = max(diffuseFactor, 0.0f);
+	vec3 diffuse = cubeColour * pLightColour * diffuseFactor;
+
+	vec3 H = normalize(lightDir + viewDir);
+	float specLevel = dot(n, H);
+	specLevel = max(specLevel, 0.0);
+	specLevel = pow(specLevel, shine);
+	vec3 specular = pLightColour * specLevel * specStrength;
+
+	diffuse = diffuse * attn;
+	specular = specular * attn;
+	return specular + diffuse;
+}
+
+vec3 getDirectionalLight() {
+
 	vec3 ambient = cubeColour * lightColour * ambientFactor;
 
 	float diffuseFactor = dot(n, -lightDirection);
@@ -53,35 +74,8 @@ vec3 getDirectionalLight()
 	specLevel = pow(specLevel, shine);
 	vec3 specular = lightColour * specLevel * specStrength;
 
-	return diffuse + specular + ambient;
-};
-
-vec3 getPointLight()
-{
-	float distance = length(pointLightPos - posInWS);
-	float attn = 1.0 / (pointLightAtten.x + pointLightAtten.y * distance + pointLightAtten.z * distance * distance);
-
-	vec3 lightDir = normalize((pointLightPos - posInWS));
-
-	vec3 ambient = cubeColour * lightColour * ambientFactor;
-
-	vec3 n = normalize(normals);
-	float diffuseFactor = dot(n, -lightDir);
-	diffuseFactor = max(diffuseFactor, 0.0f);
-	vec3 diffuse = cubeColour * lightColour * diffuseFactor;
-
-	vec3 viewDir = normalize(viewPos - posInWS);
-	vec3 H = normalize(-lightDir + viewDir);
-	float specLevel = dot(n, H);
-	specLevel = max(specLevel, 0.0);
-	specLevel = pow(specLevel, shine);
-	vec3 specular = lightColour * specLevel * specStrength;
-
-	diffuse = diffuse * attn;
-	specular = specular * attn;
-
-	return diffuse + specular;
-};
+	return ambient + diffuse + specular;
+}
 
 //void main()
 //{
