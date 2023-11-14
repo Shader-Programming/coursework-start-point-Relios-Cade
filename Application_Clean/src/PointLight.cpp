@@ -1,4 +1,4 @@
-#include "pointLight.h"
+#include "PointLight.h"
 
 PointLight::PointLight(glm::vec3 colour, glm::vec3 position, glm::vec3 constant) :
 	m_colour(colour),
@@ -9,7 +9,7 @@ PointLight::PointLight(glm::vec3 colour, glm::vec3 position, glm::vec3 constant)
 void PointLight::setLightUniforms(Shader* shader)
 {
 	shader->use();
-	shader->setVec3("pLightPosition", m_position);
-	shader->setVec3("pLightColour", m_colour);
-	shader->setVec3("pAttentuation", m_constants);
+	shader->setVec3("pointLightPos", m_position);
+	shader->setVec3("pointLightColour", m_colour);
+	shader->setVec3("pointAttentuation", m_constants);
 }

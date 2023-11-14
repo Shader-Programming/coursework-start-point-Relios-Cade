@@ -5,7 +5,7 @@ MyScene::MyScene(GLFWwindow* window, InputHandler* H) : Scene(window, H)
 {
 	m_camera = new FirstPersonCamera();
 	m_camera->attachHandler(m_window, m_handler);
-	m_myShader = new Shader("..\\Shaders\\vertexShader.glsl", "..\\Shaders\\fragmentShader.glsl");
+	m_myShader = new Shader("..\\Shaders\\VertShader.glsl", "..\\Shaders\\FragShader.glsl");
 
 	m_directionalLight = new DirectionalLight(glm::vec3(1.0), glm::vec3(0.25f, -1.0f, 0.5f));
 	m_directionalLight->setLightUniforms(m_myShader);
