@@ -35,7 +35,7 @@ vec3 viewDir = normalize(viewPos - posInWS);
 void main()
 {
 	vec3 result = getDirectionalLight();
-	result += getPointLight();
+	/*result += getPointLight();*/
 	FragColor = vec4(result, 1.0);
 }
 

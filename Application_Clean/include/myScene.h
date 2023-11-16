@@ -5,6 +5,7 @@
 #include "DirectionalLight.h"
 #include "Cube.h"
 #include "PointLight.h"
+#include "Plane.h"
 
 class MyScene : public Scene {
 
@@ -22,6 +23,7 @@ private:
 	Cube* m_cube2;
 	PointLight* m_pointLight;
 	PointLight* m_pointLight2;
+	Plane* m_plane;
 
 	//void makeVAO();
 	void render();

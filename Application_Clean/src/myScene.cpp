@@ -1,5 +1,6 @@
 #include "myScene.h"
 #include "cube.h"
+#include "Plane.h"
 
 MyScene::MyScene(GLFWwindow* window, InputHandler* H) : Scene(window, H)
 {
@@ -23,6 +24,9 @@ MyScene::MyScene(GLFWwindow* window, InputHandler* H) : Scene(window, H)
 	m_pointLight2 = new PointLight(glm::vec3(1.0, 0.0, 0.0), glm::vec3(2.0, 0.0, 0.0), glm::vec3(1.0, 0.22, 0.02));
 	m_pointLight2->setLightUniforms(m_myShader);
 
+	m_plane = new Plane(glm::vec3(0.8824, 0.6784, 0.39), 64, 16); //cube 1 colour
+	m_plane->setPlaneMaterialValues(m_myShader);
+
 	f_rotationSpeed = 0.015;
 }
 
@@ -42,11 +46,16 @@ void MyScene::update(float dt)
 
 void MyScene::render()
 {
+	// Clear the screen and depth buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	// Set up view and projection matrices
+	m_myShader->use();
 	m_myShader->setMat4("View", m_camera->getViewMatrix());
 	m_myShader->setMat4("Projection", m_camera->getProjectionMatrix());
 	m_myShader->setVec3("viewPos", m_camera->getPosition());
 
+	// Render the cubes
 	glBindVertexArray(m_cube->getVAO());
 
 	m_cube->setTransform(m_myShader);
@@ -55,7 +64,15 @@ void MyScene::render()
 
 	m_cube2->setTransform(m_myShader);
 	m_cube2->rotate(-f_rotationSpeed, glm::vec3(0.0, 1.0, 0.0));
-	glDrawElements(GL_TRIANGLES, m_cube->getIndicesCount(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, m_cube2->getIndicesCount(), GL_UNSIGNED_INT, 0);
+
+	// Render the plane
+	glBindVertexArray(m_plane->getVAO());
+
+	m_plane->setTransform(m_myShader);
+	glDrawElements(GL_TRIANGLES, m_plane->getIndicesCount(), GL_UNSIGNED_INT, 0);
 }
+
+
 
 
