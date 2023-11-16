@@ -10,10 +10,10 @@ in vec3 posInWS;
 //vec3 lightDirection = vec3(0.05f, -1.0f, 0.0f);
 
 
-float ambientFactor = 0.75;
+float ambientFactor = 0.5;
 
 
-float shine = 10.0f;
+float shine = 100.0f;
 float specStrength = 0.5f;
 
 uniform vec3 viewPos;
@@ -35,25 +35,25 @@ vec3 viewDir = normalize(viewPos - posInWS);
 void main()
 {
 	vec3 result = getDirectionalLight();
-	//result += getPointLight();
+	result += getPointLight();
 	FragColor = vec4(result, 1.0);
 }
 
 vec3 getPointLight() {
-	float distance = length(pLightPosition - posInWS);
-	float attn = 1.0 / (pAttentuation.x + (pAttentuation.y * distance) + (pAttentuation.z * (distance * distance)));
+	float distance = length(pointLightPos - posInWS);
+	float attn = 1.0 / (pointLightAtten.x + (pointLightAtten.y * distance) + (pointLightAtten.z * (distance * distance)));
 
-	vec3 lightDir = normalize((pLightPosition - posInWS));
+	vec3 lightDir = normalize((pointLightPos - posInWS));
 
 	float diffuseFactor = dot(n, lightDir);
 	diffuseFactor = max(diffuseFactor, 0.0f);
-	vec3 diffuse = cubeColour * pLightColour * diffuseFactor;
+	vec3 diffuse = cubeColour * pointLightColour * diffuseFactor;
 
 	vec3 H = normalize(lightDir + viewDir);
 	float specLevel = dot(n, H);
 	specLevel = max(specLevel, 0.0);
 	specLevel = pow(specLevel, shine);
-	vec3 specular = pLightColour * specLevel * specStrength;
+	vec3 specular = pointLightColour * specLevel * specStrength;
 
 	diffuse = diffuse * attn;
 	specular = specular * attn;
