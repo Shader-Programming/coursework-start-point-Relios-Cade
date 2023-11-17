@@ -1,6 +1,6 @@
 #include "PointLight.h"
 
-PointLight::PointLight(glm::vec3 colour, glm::vec3 position, glm::vec3 constant) :
+class PointLight::PointLight(glm::vec3 colour, glm::vec3 position, glm::vec3 constant) :
 	m_colour(colour),
 	m_position(position),
 	m_constants(constant)
