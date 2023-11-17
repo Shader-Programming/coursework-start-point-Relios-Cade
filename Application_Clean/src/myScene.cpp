@@ -21,10 +21,10 @@ MyScene::MyScene(GLFWwindow* window, InputHandler* H) : Scene(window, H)
 	m_pointLight = new PointLight(glm::vec3(1.0, 0.0, 0.0), glm::vec3(-2.0, 0.0, 3.0), glm::vec3(1.0, 0.22, 0.02));
 	m_pointLight->setLightUniforms(m_myShader);
 
-	m_pointLight2 = new PointLight(glm::vec3(1.0, 0.0, 0.0), glm::vec3(2.0, 0.0, 0.0), glm::vec3(1.0, 0.22, 0.02));
+	m_pointLight2 = new PointLight(glm::vec3(0.0, 0.0, 1.0), glm::vec3(2.0, 0.0, 0.0), glm::vec3(1.0, 0.22, 0.02));
 	m_pointLight2->setLightUniforms(m_myShader);
 
-	m_plane = new Plane(glm::vec3(0.8824, 0.6784, 0.39), 64, 16); //cube 1 colour
+	m_plane = new Plane(glm::vec3(0.8824, 0.6784, 0.39), 64, 16);
 	m_plane->setPlaneMaterialValues(m_myShader);
 
 	f_rotationSpeed = 0.015;

@@ -11,5 +11,5 @@ void PointLight::setLightUniforms(Shader* shader)
 	shader->use();
 	shader->setVec3("pointLightPos", m_position);
 	shader->setVec3("pointLightColour", m_colour);
-	shader->setVec3("pointAttentuation", m_constants);
+	shader->setVec3("pointLightAtten", m_constants);
 }
